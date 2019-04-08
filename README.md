@@ -21,10 +21,11 @@ npm run build 自动编译src下面的项目（因为go是编译语言，非脚�
 line1作为不同的业务组（比如前端业务组）(可以建立多个业务组)
 line1下面就可以建立多个项目(比如hello)（每个项目下面又有多个模块）
 
-
 企业目录的编译步骤：
 go build github.com/colorsskproject/line1/hello
 然后直接执行hello.exe即可
+
+待续。。。
 
 
 
