@@ -24,8 +24,24 @@ line1下面就可以建立多个项目(比如hello)（每个项目下面又有�
 企业目录的编译步骤：
 go build github.com/colorsskproject/line1/hello
 然后直接执行hello.exe即可
+指定编译后的可执行二进制文件的目录：
+go build -o bin/hello.exe github.com/colorsskproject/line1/hello
 
-待续。。。
+运行执行脚本：
+go run  [运行的文件路径]（此时的路径是全部的：带src）
+
+
+go install: 安装可执行文件到bin目录（go build之后的二进制文件再放入bin目录下面）
+例子： go install github.com/colorsskproject/line1/hello
+此时相当于执行了go build -o bin/hello.exe github.com/colorsskproject/line1/hello
+
+
+
+go其他基本命令介绍：
+go test 执行单元测试或压力测试
+go env 显示go相关的环境变量
+go fmt 格式化源代码: go fmt github.com/colorsskproject/line1/hello 类似于eslint规范自动校正
+
 
 
 
