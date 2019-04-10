@@ -6,5 +6,5 @@ func add(a int,b int) (int,int) {
 }
 func main () {
 	sum,sub:=add(2,5)
-	fmt.Println(sum)
+	fmt.Println(sum,sub)
 }

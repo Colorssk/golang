@@ -62,7 +62,9 @@ func main(){
 channel:
 管道，类似unix/linux的pipe;多个goroute之间通过channel进行通信;支持类型
 
-多返回值：
+import(
+    "strings"// strings.Split/strings.Contains/.HasPrefix(前缀判断)/.HasSuffix(后缀判断)/Index(第一次出现的位置)/LastIndex(最后出现的位置)
+)
 
 
 
