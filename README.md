@@ -42,6 +42,32 @@ go test 执行单元测试或压力测试
 go env 显示go相关的环境变量
 go fmt 格式化源代码: go fmt github.com/colorsskproject/line1/hello 类似于eslint规范自动校正
 
+go的性能了解：
+
+go的垃圾回收：有专门的cg线程，只需要new 分配内存，只要没有被引用了，就会被自动回收
+
+go的特性：
+天然并发： 从语言层面支持并发(c,c++,java是操作系统层面上的线程)
+goruntine: 轻量级线程，成千上万的goroute成为可能
+
+例子：
+func calc(){
+    // 大量的计算
+}
+func main(){
+    go calc()//此时大量的计算会在一个新开辟的线程中运行而不会阻塞主线程
+}
+
+
+channel:
+管道，类似unix/linux的pipe;多个goroute之间通过channel进行通信;支持类型
+
+多返回值：
+
+
+
+
+
 
 
 
