@@ -63,10 +63,12 @@ channel:
 管道，类似unix/linux的pipe;多个goroute之间通过channel进行通信;支持类型
 
 import(
-    "strings"// strings.Split/strings.Contains/.HasPrefix(前缀判断)/.HasSuffix(后缀判断)/Index(第一次出现的位置)/LastIndex(最后出现的位置)
+    "strings"// strings.Split/strings.Contains/.HasPrefix(前缀判断)/.HasSuffix(后缀判断)/Index(第一次出现的位置)/LastIndex(最后出现的位置)/join(a[]string,sep string)
 )
 
-
+len表示的是字节数
+要判断字符数:
+rune类型用来表示utf8字符，一个rune字符由1个或多个byte组成
 
 
 
