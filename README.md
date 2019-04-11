@@ -70,6 +70,56 @@ len表示的是字节数
 要判断字符数:
 rune类型用来表示utf8字符，一个rune字符由1个或多个byte组成
 
+时间和日期类型
+
+time包：time.Time类型, 用来表示时间
+time.Now()获取当前时间
+time.Now().Unix()当前时间戳
+
+time.Duration 表示纳秒
+常量: 
+Nanosecond Duration = 1
+Microsecond = 1000*Nanosecond
+Millisecond = 1000*Microsecond
+Second = 1000*~
+...
+
+格式化时间：time.Now().Format("2006/01/02 15:04:05")// 要把2006作为模版
+
+
+if的其他用法：  if num:=10;num%2==0 {
+
+}
+
+for的不同的用法：
+for no,i:=10,1;i<=10&&no<=19;i,no = i+1,no+1{
+
+}
+for{// 无限循环
+
+}
+
+switch a:=2,a {
+    case 1:
+    ...
+    case 2:
+    ...
+    // 其他用法
+    case 'a','b','c','d':
+    ...
+    default:
+    ...
+}
+// 或者
+a:=2
+switch  {
+    case a>1:// 此时每个都是一个条件判断 加上fallthrough之后会穿透到下一个代码执行
+    ...
+    case a<1:
+    ...
+    default:
+    ...
+}
 
 
 
