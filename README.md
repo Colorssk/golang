@@ -120,7 +120,24 @@ switch  {
     default:
     ...
 }
+// function前面的形参参数类型不写会继承后面的类型
+fun add(a,b int)(sum int,sub int){
+    sum := a+b
+    sub := a-b
+    return
+}
 
+func main() {
+    sub,_:=add(2,3)//_表示不需要的返回值，申明不使用不会报错
+}
+// 传参：可变参数
+func calc_v1(b ...int)(sub in,sum int){// 表示可以传一个参数b可以不传也可以传多个
+    return
+}
+
+
+defer语句
+defer用来定义语句，只有在函数返回之前才会执行
 
 
 
