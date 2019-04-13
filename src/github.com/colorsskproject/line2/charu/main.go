@@ -17,6 +17,18 @@ func insert_sort(a [8]int) [8]int { // 这里的a仅仅是个拷贝所以需要�
 	return a
 }
 
+// 选择排序
+func choose_sort(a [8]int) [8]int { // 这里的a仅仅是个拷贝所以需要返回
+	for i := 1; i < len(a); i++ {
+		for j := i + 1; j < len(a); j-- {
+			if a[j] < a[i] {
+				a[i], a[j] = a[j], a[i]
+			}
+		}
+	}
+	return a
+}
+
 // 插入排序
 func main() {
 	var i [8]int = [8]int{8, 1, 2, 3, 7, 2, 6, 3} // 数组定义的形式
