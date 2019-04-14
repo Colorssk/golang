@@ -17,6 +17,18 @@ func insert_sort(a [8]int) [8]int { // 这里的a仅仅是个拷贝所以需要�
 	return a
 }
 
+// 冒泡排序
+func bop_sort(a [8]int) [8]int {
+	for i := 0; i < len(a); i++ {
+		for j := 0; j < len(a)-i-1; j++ {
+			if a[j] > a[j+1] {
+				a[j], a[j+1] = a[j+1], a[j]
+			}
+		}
+	}
+	return a
+}
+
 // 选择排序
 func choose_sort(a [8]int) [8]int { // 这里的a仅仅是个拷贝所以需要返回
 	for i := 1; i < len(a); i++ {
