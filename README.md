@@ -157,7 +157,12 @@ var b []int = a[1,2]// 切片左闭右开  (slice) [1:]/[:5]/[:](包含所有元
  b:= a[1:3]
  那么b的容量就是3，从第二个开始到最后
 
- 密码生成工具：包password
+ 密码生成工具：文件夹:password
+
+ 
+
+
+ 
 
 
  切片拼接
@@ -173,7 +178,8 @@ var b []int = a[1,2]// 切片左闭右开  (slice) [1:]/[:5]/[:](包含所有元
  make和new的区别
  make为内建类型slice,map,和channel分配内存
  
- new用于各种类型的内存分配,new返回是一个指针
+ new用于各种类型的内存分配,new返回是一个指针比如int和数组
+ // 文件夹：makeandnew
 
 
  排序包
@@ -191,3 +197,22 @@ var a *int32
 a = &b
 
 操作指针变量:  获取值 *a
+
+map结构(key-value),map默认初始化为nil，需要使用make分配map内存(初始化):make(map[string]int)
+ var a map[string]int
+ var b map[int]string
+
+ 见map文件夹(map是引用类型)
+
+ 注意：map的扩容是有消耗的(涉及到扩容和拷贝)
+
+ 判断map中的指定的key是否存在  value,ok := map[key]// 存在就会获得value并且ok为true
+
+ 遍历map用for key,value := range a{
+
+ }
+ 删除map中的函数
+
+ delete(a,"key1")
+
+ 长度len(a)
