@@ -216,3 +216,25 @@ map结构(key-value),map默认初始化为nil，需要使用make分配map内存(
  delete(a,"key1")
 
  长度len(a)
+
+
+ ////
+ 定义map类型的切片（切片的类型是map）//有点像数组对象
+ var mapslice []map[string]int
+ mapslice = make([]map[string]int,5)// 定义二维“数组”的时候也要先初始化再使用
+ mapslice[0] = make(map[string]int,10)//相当于要先把数组元素先声明类型再使用
+ mapslice[0]["a"] = 10
+
+
+ // 同理存在对象数组(map中的元素是切片)
+
+var s map[string][]int = make(map[string][]int,5)
+// 同理需要判断map元素是否存在不存在，需要初始化
+key:="aa"
+value,ok:= s[key]
+if !ok{
+    //不存在，一定要初始化(初始化切片)
+    s[key] = make([]int,0,10)
+}
+value = append(value,100)
+s[key] = value
