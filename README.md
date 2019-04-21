@@ -263,3 +263,44 @@ a = b// 成立
 在包导入的顺序中，最后导入的包先执行（先完成全局变量初始化和init函数）
 
 如果_标识符加载包的前面表示导入这个包但是没引用这个包中的属性和方法(包中的init方法会执行)
+
+// switch char {
+    case 'a','A':
+      // doing
+    case 'e','E'：
+      //doing
+}
+
+结构体
+通过struct实现面向对象，struct是用户自定义的类型
+type User struct {
+    Username string
+    Sex string
+    Age int
+    AvataUrl string
+}
+
+初始化1:
+     var user User
+     user.Age = 18
+     ...
+初始化2：
+    var user User = User {
+        "Username": "user01",
+        "Age": 18,// 也可以部分初始化
+    }
+
+// 结构体类型的指针
+ var user *User  = &User{}//&User{}和new(User)一样都是返回一个结构体的地址
+ //或者
+ var user *User  = &User{
+     "Username":"user01"
+ }
+ // 或者
+ user:= new(User)
+ user.Username="user01"// 这里是个语法糖相当于(*user).Username="user01"
+
+ 结构体内存布局:
+ 占用连续的内存空间
+
+ go语言中struct没有构造函数和析构函数但是可以自己实现一套
