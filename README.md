@@ -278,11 +278,22 @@ type User struct {
     Sex string
     Age int
     AvataUrl string
+    int
+    string//  匿名字段
+    *Address// 匿名结构体// 这样变相实现继承
 }
 
 初始化1:
      var user User
      user.Age = 18
+     // 匿名函数初始化
+     user.int = 100
+     user.Address = &Address{
+         a:'a',
+         b:'b'
+     }
+     // 或者直接
+     user.a = 'a'// 直接给Address中的属性赋值，同理访问的时候可以直接调用里面结构体中的属性
      ...
 初始化2：
     var user User = User {
@@ -300,7 +311,78 @@ type User struct {
  user:= new(User)
  user.Username="user01"// 这里是个语法糖相当于(*user).Username="user01"
 
+
+ 指针时候访问： user相当于*user
+
  结构体内存布局:
  占用连续的内存空间
 
  go语言中struct没有构造函数和析构函数但是可以自己实现一套
+
+
+ 匿名冲突(外层和内层结构体有相同的匿名字段后者署名字段)
+ 此时初始化需要具体指向内部结构体:user.Address =  new(Address)
+ 访问时候同理: user.Address.a = "a"
+
+ tag是结构体中的元信息,可以在运行的时候通过反射的机制读取出来
+
+ type User struct{
+     Username string `json:"username",db:"user_name"`
+     Sex string `json:"sex"`// key-value格式
+ }
+
+json序列化
+包：encoding/json
+data,_:=json.Marshal(User)//data是字符数组 string(data)转化为字符串
+此时输出就是小写的username,用途json序列化的时候传参需要大写
+
+var a int
+输入：fmt.Scanf("%d\n",&a)
+
+go中的方法定义：是在函数前面加上一个接受者，这样就知道这个方法属于哪个类型了
+
+type A struct {
+
+}
+
+func (a A) Test(s string){//A是Test的接受者，因此A这个对象就有Test方法
+}
+
+//也可以为当前包内定义的任何类型增加方法
+type Integer int
+
+func (i Integer)Print(){
+    
+}
+func main(){
+    var a Integer
+    a = 1000
+    a.Print()
+
+    //或者
+    var b int =200
+    a =Integer(b)// 就是Integer结构对象，相当于初始化了
+    a.pritn()
+}
+
+// 为了能够让结构体是引用类型：
+ func (p *People) Set(name string,country string){
+    p.Name = name
+    p.Country = country
+ }
+
+ //调用的时候  初始化之后
+ p1 := People{
+		Name:   "aa",
+		Contry: "China",
+	}
+   //(&p1).Set("a","b")//此时修改之后的值就会改变
+   当然上面是底层会帮做的所以正常就可
+   p1.Set("a","b")
+
+
+// 结构体和json序列化 json(文件夹)
+
+
+   
+
