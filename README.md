@@ -387,9 +387,15 @@ func main(){
 var a int
 fmt.Scanf("%d%v%d",&a,&b,&c)// 一定要用地址   输入的时候要加空格
 单个输入需要  fmt.Scanf("%d\n",&a)
-fmt.Scan(&a,&b,&c)
-fmt.Scanln()
+fmt.Scan(&a,&b,&c)// 此时支持换行输入
+fmt.Scanln(&a,&b,&c)// 此时一定要在同一行输入
 
+// 从字符串中获取输入
+str:="88 asd 10.0"
+fmt.Sscanf(str,"%d%s%f\n",&a,&b,&c)
+str1:="88 asd\n\n 10.0"
+fmt.Sscan(str,&a,&b,&c)// 此时支持换行输入
+fmt.Sscanln(str,&a,&b,&c)// 此时一定要在同一行输入
 
    
 
