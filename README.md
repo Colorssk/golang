@@ -383,6 +383,13 @@ func main(){
 
 // 结构体和json序列化 json(文件夹)
 
+格式化输入
+var a int
+fmt.Scanf("%d%v%d",&a,&b,&c)// 一定要用地址   输入的时候要加空格
+单个输入需要  fmt.Scanf("%d\n",&a)
+fmt.Scan(&a,&b,&c)
+fmt.Scanln()
+
 
    
 
