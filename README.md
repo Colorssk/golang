@@ -398,4 +398,8 @@ fmt.Sscan(str,&a,&b,&c)// 此时支持换行输入
 fmt.Sscanln(str,&a,&b,&c)// 此时一定要在同一行输入
 
    
-
+// 从文件中输入
+fmt.Fscanf(os.Stdin,"%d%s%f\n",&a,&b,&c)
+fmt.Fscan(os.Stdin,&a,&b,&c)
+...同理
+fmt.Fprintln(os.Stdout,a,b,c)
