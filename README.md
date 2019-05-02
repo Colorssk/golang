@@ -403,3 +403,240 @@ fmt.Fscanf(os.Stdin,"%d%s%f\n",&a,&b,&c)
 fmt.Fscan(os.Stdin,&a,&b,&c)
 ...同理
 fmt.Fprintln(os.Stdout,a,b,c)
+
+//buffer流
+import bufio
+reader:=bufio.NewReader(os.Stdio)
+var str string
+str,_=reader.ReadString('\n')//标识符是读取到换行符
+
+//控制台传参(字符串的切片)
+main(){
+    if len(os.Args)>1{
+        fmt.Println(os.Args[0])
+        for index,v := range os.Args{
+            if index =  0{// 第零个参数不考虑
+                continue
+            }
+        }
+    }
+}
+
+
+cli包的使用
+import github.com/urfave/cli
+(在项目目录下运行 go get github.com/urfave/cli)
+
+框架：控制台程序的框架
+func main(){
+app:=cli.NewApp()
+app.Name='app'
+
+app.Usage = "fight"
+app.Action = func(c *cli.Context) error{
+    if c.NArgs>0//表示传过来的参数的个数 
+    fmt.Print("hello world")
+    // 业务代码  c.Args().Get(0)//获取第一个参数或者c.Args()[0]
+    return nil
+}
+app.Run(os.Args)
+
+}
+
+
+// flag
+  var lang string
+  app.Flags = []cli.Flag{
+      cli.StringFlag{
+          Name: 'lang,l',后面是短选项  xxx.exe --lang arg   传入参数arg
+          Value:'aa',
+          Usage:'aa',
+          Destination:&lang,
+      },
+      cli.BoolFlag{
+          Name: ''
+          Usage:'',
+          Destination:,
+      }
+  }
+
+文件读写:
+//只读
+ file,err = os.Open("")
+
+
+defer file.Close()
+var buf[128]byte
+n,err:=file.Read(buf[:])
+//使用
+string(buf[0:n])
+
+
+或者把读取的结果放入切片
+var content []byte
+for{
+    n,err:=file.Read(buf[:])
+    if err == io.EOF{//文件读取结束
+    break
+    }
+    if err!=nil{//
+        return
+    }
+    content  = append(content,buf[0:n]...)//把一个切片添加到另一个切片需要展开
+}
+
+//使用缓存buffer
+ file,err = os.Open("")
+
+
+defer file.Close()
+reader:=bufio.NewReader(file)
+for{
+    line,err:=reader.ReadString("\n")
+     if err == io.EOF{//文件读取结束
+    break
+    }
+    if err!=nil{//
+        return
+    }
+}
+
+// 文件读取
+import io/ioutil
+content,err:=ioutil.ReadFile("")//cotent是字节切片
+
+fmt.Print(string(content))
+
+//读取压缩文件
+compress/gzip
+
+fi,err:=os.Open("...gz")
+fz,err:=gzip.NewReader(fi)
+
+
+var buf [128]byte
+n,err:=fz.Read(buf)
+
+//文件写入
+file,err:=os.OpenFile("./test.data",os.O_CREATE|os.O_CREATE|os.O_WRONLY,0666)//创建|如果有覆盖...
+
+defer file.Close()
+file.Write([]byte("hello world"))
+
+writeat
+writestring
+
+
+//bufio方式写入
+op,err:=bufio.NewWrite(file)
+op.WriteString("....")
+op.Flush()//刷新从缓冲区写入磁盘
+
+// ioutil写入
+content,err:= ioutil.WriteFile("test.dat",[]byte("aaa"),0755)//写入的是字节数组
+
+
+//拷贝文件
+ b,err:=os.Open("")
+ a,err:=is.OpenFile("",os.O_WRONLY|os.O_CREATE,0644)
+ io.Copy(a,b)//b文件写入a
+
+
+//defer
+x:=5
+defer func(){
+ x=1
+}
+return x
+x赋值
+defer指令
+ret指令
+
+但是 
+func func()(y int){
+    x:=5
+    defer func(){
+        x+=1//改的局部变量,y没有改变
+    }()
+    return x
+}
+先x赋值y
+derfer执行，值类型，x变化，y没变
+return  y 值是5
+
+同理: defer func(x int){
+
+}(x)//x作为新参传入的是副本
+
+
+接口：
+ type Animaml interface{
+     Talk()
+     Eat()
+     Name()String
+ }
+ type Dog struct {
+
+ }
+ func (d Dog) Talk(){
+
+ }
+ func(d Dog)Eat(){
+    fmt.Println("aa")
+ }
+ func(d Dog)Name(){
+
+ }
+ func(d Dog)Name()string{
+     
+ func main(){
+     var d Dog
+     var a Animal
+     a = d//d这个接口对象需要包含接口中的所有方法
+
+     a.Eat()// aa
+ }
+
+
+ //空接口
+ var a interface{}
+ var b int = 100
+ a = b
+
+ //类型断言
+ func test(a interface{}){  a Animal//参数可以传具体的接口，下面再判断
+     s,ok  := a.(int)// 此时a就断言只能是int类型
+     if !ok{
+         fmt.Println("")
+     }
+     // type switch
+     switch a.(type){//这里一定是type
+        case string:
+        ...
+        case int:
+        default:
+        ...
+     }
+     
+ }
+
+ // 指针类型的接口
+ var a animal// 接口也要申明
+ var d *Dog = &Dog{}
+ a = d
+ a.Eat()//==*(&Dog).Eat()
+
+ 但是如果是指针类型实现的这个接口上面就会报差
+ func (d *Dog)Name() string{
+
+ }
+
+ //接口嵌套
+ type a interface{
+ }
+ type b interface{
+ }
+ type c interface{
+     a
+     b
+ }
