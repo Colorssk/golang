@@ -32,6 +32,8 @@ func main(){
 		a5
 		a6
 	)
+	var str [] string = [] string{"a","b","c"}
+	result :=strings.Join(str,';')
 	fmt.Println(a1,a2,a3,a4,a5,a6)//1<<iota:1 2 4 8 16 32    2<<iota:2 4 8 16 32 64  3<iota:3 6 12 24 48 96
 	fmt.Printf("a=%d,b=%t,c=%s,d=%f\n",a,b,c,d)
 }

@@ -15,7 +15,6 @@ func student() {
 
 	value["name"] = name
 	value["age"] = age
-	stuMap[id] = value
 
 	stuMap[id] = value
 }
