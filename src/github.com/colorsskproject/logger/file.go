@@ -3,6 +3,7 @@ package logger
 import (
 	"fmt"
 	"os"
+	"time"
 )
 
 type FileLogger struct {
@@ -48,7 +49,11 @@ func (f *FileLogger) Debug(format string, args ...interface{}) {
 	if f.level > LogLevelDebug {
 		return
 	}
+	now := time.Now()
+	nowstr := now.Format("2006-01-02 15:04:05.999")
+	fmt.Fprintf(f.file, nowstr)
 	fmt.Fprintf(f.file, format, args...)
+	fmt.Fprintln(f.file)
 }
 func (f *FileLogger) Trace(format string, args ...interface{}) {
 	if f.level > LogLevelDebug {

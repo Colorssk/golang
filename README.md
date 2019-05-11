@@ -607,8 +607,7 @@ return  y 值是5
  func test(a interface{}){  a Animal//参数可以传具体的接口，下面再判断
      s,ok  := a.(int)// 此时a就断言只能是int类型
      if !ok{
-         fmt.Println("")
-     }
+         fmt.Println("")     }
      // type switch
      switch a.(type){//这里一定是type
         case string:
@@ -640,3 +639,19 @@ return  y 值是5
      a
      b
  }
+
+
+ //获取路径最后的文件名:
+ path.Base("...")
+
+ //获取cpu执行到的位置
+ import "runtime"
+
+
+ pc.file,line,ok:=runtime.Caller(2)//参数2表示栈的深度
+
+if ok{
+    file = file//执行到的文件
+    funcName = runtime.FuncForPc(pc).Name()//执行到的函数
+    lineNo = line// 行号
+}
