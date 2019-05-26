@@ -655,3 +655,42 @@ if ok{
     funcName = runtime.FuncForPc(pc).Name()//执行到的函数
     lineNo = line// 行号
 }
+
+反射：
+内置包： reflect
+获取类型信息： reflect.TypeOf
+获取值信息： reflect.ValueOf// 这里拿到的仅仅是一个副本所以直接用v.SetInt()设值会报错
+
+t := reflect.TypeOf(a)// 返回的是结构体，所以之后用Kind()方法具体判断
+k:=t.Kind()
+switch k {
+    case reflect.Int64:
+    ...
+    case reflect.String:
+    ...
+    case reflect.Chan:
+    ...
+    case reflect.Map:
+    ...
+    case reflect.Struct:
+    ...
+    case reflect.Ptr:
+}
+
+同理：
+v:=reflect.VlaueOf(x)
+v.Type(),
+v.Kind()
+v.Float()// 获取在值信息
+
+通过反射设置值:
+v.SetInt(100)
+v.SetFloat(6.9)
+
+注意点：分装成方法的时候传值需要时地址: &x
+而指针中的赋值是这样的：
+var b *int = new(int)
+*b = 100
+所以：
+case reflect.Ptr:
+    v.Elem().SetFloat(6.8)
