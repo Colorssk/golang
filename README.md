@@ -694,3 +694,6 @@ var b *int = new(int)
 所以：
 case reflect.Ptr:
     v.Elem().SetFloat(6.8)
+
+对于结构体来说：
+。。。
