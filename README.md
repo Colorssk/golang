@@ -696,4 +696,34 @@ case reflect.Ptr:
     v.Elem().SetFloat(6.8)
 
 对于结构体来说：
-。。。
+
+type Student struct {
+    Name string
+    ......
+}
+
+func main(){
+    var s Student
+    v:=reflect.VlaueOf(s)//     v.NumField()   field:=v.Field(i)    field.Interface()//转化成接口类型  结构体元素值
+    t:=v.Type()  t.Field(i).Name// 结构体变量名字
+    kind:=t.kind()
+    switch kind {
+    case reflect.Int64:
+    ...
+    case reflect.String:
+    ...
+    case reflect.Struct:
+}
+
+
+结构体赋值：
+var s Student
+v:=reflect.ValueOf(&s)
+
+v.Elem().Field(0).SetString("123")
+v.Elem().FiledByName("Sex").SetInt(2)
+
+
+//访问本地服务器：
+
+命令： godoc -http=:9090
