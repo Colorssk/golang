@@ -727,3 +727,17 @@ v.Elem().FiledByName("Sex").SetInt(2)
 //访问本地服务器：
 
 命令： godoc -http=:9090
+
+
+配置库项目：解析ini配置文件
+[server]
+ip=10.230.2.2
+port = 8080
+
+[mysql]
+username = root
+passwd = root
+database = test
+host=192.168.1.1
+port = 3838
+。。。
