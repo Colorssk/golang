@@ -740,5 +740,7 @@ passwd = root
 database = test
 host=192.168.1.1
 port = 3838
-。。。
-。。。
+
+
+
+单元测试的试用也在iniconfig文件中
