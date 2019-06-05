@@ -36,7 +36,7 @@ func init() {
 // 反序列化 成为结构体
 func retranfs(jsonstr string) (c1 *Class) {
 	c1 = &Class{}
-	err := json.Unmarshal([]byte(jsonstr), c1) //第一个参数一定要是赐福数组,转化完之后存储在c1中
+	err := json.Unmarshal([]byte(jsonstr), c1) //第一个参数一定要是字符数组,转化完之后存储在c1中
 	if err != nil {
 		fmt.Println("wrong")
 		return

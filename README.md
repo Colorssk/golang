@@ -744,4 +744,9 @@ port = 3838
 
 
 单元测试的试用也在iniconfig文件中
-。。。
+field.Tag.Get("ini")//获取tag别名
+
+字符串索引:
+index := strings.Index(line, "=")
+
+.SetString()

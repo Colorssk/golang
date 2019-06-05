@@ -7,19 +7,22 @@ import (
 )
 
 type Config struct {
-	ServerConf ServerConfig `ini: "server"`
-	MysqlConf  MysqlConfig  `ini: "mysql"`
+	ServerConf ServerConfig `ini:"server"`
+	MysqlConf  MysqlConfig  `ini:"mysql"`
 }
+
 type ServerConfig struct {
-	Ip   string `ini: "ip"`
-	Port int    `ini: "port"`
+	Ip   string `ini:"ip"`
+	Port uint   `ini:"port"`
 }
+
 type MysqlConfig struct {
-	Username string `ini: "username"`
-	Passwd   string `ini: "passwd"`
-	Database string `ini: "database"`
-	Host     string `ini: "host"`
-	Port     int    `ini: "port"`
+	Username string  `ini:"username"`
+	Passwd   string  `ini:"passwd"`
+	Database string  `ini:"database"`
+	Host     string  `ini:"host"`
+	Port     int     `ini:"port"`
+	Timeout  float32 `ini:"timeout"`
 }
 
 //go test 之后会自动执行文件名是test结尾的方法，同时执行Test开头的方法
