@@ -34,6 +34,10 @@ func TestIniConfig(t *testing.T) {
 	}
 	//t.Error("hello")   报错log
 	var conf Config
+	_, err = Marshal(conf)
+	if err != nil {
+		t.Errorf("marshal failed %v", err)
+	}
 	err = UnMarshal(data, &conf)
 	if err != nil {
 		t.Error("unmarshal failed", err)

@@ -19,6 +19,7 @@ func MarshalFile(filename string, data interface{}) (err error) {
 }
 
 func Marshal(data interface{}) (result []byte, err error) {
+	fmt.Println("asd")
 	//判断是否是结构体
 	typeInfo := reflect.TypeOf(data)
 	if typeInfo.Kind() != reflect.Struct {
@@ -47,13 +48,14 @@ func Marshal(data interface{}) (result []byte, err error) {
 
 		for j := 0; j < fieldType.NumField(); j++ {
 			keyField := fieldType.Field(j)
-			fieldTagVal := keyField.Tag.Get("ini")
+			fieldTagVal := keyField.Tag.Get("ini") //用了标签所以这里显示都是小写
 			if len(fieldTagVal) == 0 {
 				fieldTagVal = keyField.Name
 			}
 
 			valField := sectionVal.Field(j)
-			item := fmt.Sprintf("%s=%v\n", fieldTagVal, valField.Interface())
+			fmt.Printf("this test %s=%v\n", fieldTagVal, valField.Interface())
+			item := fmt.Sprintf("this test %s=%v\n", fieldTagVal, valField.Interface())
 			conf = append(conf, item)
 		}
 	}

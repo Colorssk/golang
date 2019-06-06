@@ -750,4 +750,4 @@ field.Tag.Get("ini")//获取tag别名
 index := strings.Index(line, "=")
 
 .SetString()
-。。。
+.Interface()//转化为%v任意类型
