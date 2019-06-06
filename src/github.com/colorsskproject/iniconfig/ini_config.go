@@ -19,6 +19,7 @@ func MarshalFile(filename string, data interface{}) (err error) {
 }
 
 func Marshal(data interface{}) (result []byte, err error) {
+	//判断是否是结构体
 	typeInfo := reflect.TypeOf(data)
 	if typeInfo.Kind() != reflect.Struct {
 		err = errors.New("please pass struct")
@@ -165,7 +166,7 @@ func parseItem(lastFieldName string, line string, result interface{}) (err error
 	switch fieldValue.Type().Kind() {
 	case reflect.String:
 		fieldValue.SetString(val)
-	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
+	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64: //也可以表示多种状态
 		intVal, errRet := strconv.ParseInt(val, 10, 64)
 		if errRet != nil {
 			err = errRet
