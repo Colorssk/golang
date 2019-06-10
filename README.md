@@ -751,4 +751,3 @@ index := strings.Index(line, "=")
 
 .SetString()
 .Interface()//转化为%v任意类型
-测试
