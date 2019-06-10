@@ -10,5 +10,5 @@ type LogInterface interface {
 	Warn(format string, args ...interface{})
 	Error(format string, args ...interface{})
 	Fatal(format string, args ...interface{})
-	Close()
+	Close() //continue------
 }
