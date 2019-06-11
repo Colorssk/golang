@@ -1,8 +1,7 @@
 package iniconfig
 
 import (
-	"fmt"
-	"io/ioutil" //用来读取文件
+	"io/ioutil"
 	"testing"
 )
 
@@ -25,22 +24,48 @@ type MysqlConfig struct {
 	Timeout  float32 `ini:"timeout"`
 }
 
-//go test 之后会自动执行文件名是test结尾的方法，同时执行Test开头的方法
 func TestIniConfig(t *testing.T) {
-	fmt.Println("hello world")
-	data, err := ioutil.ReadFile("./config.ini") // 读到的数据是[]byte
+
+	data, err := ioutil.ReadFile("./config.ini")
 	if err != nil {
 		t.Error("read file failed")
 	}
-	//t.Error("hello")   报错log
+
 	var conf Config
-	_, err = Marshal(conf)
-	if err != nil {
-		t.Errorf("marshal failed %v", err)
-	}
 	err = UnMarshal(data, &conf)
 	if err != nil {
-		t.Error("unmarshal failed", err)
+		t.Errorf("unmarshal failed, err:%v", err)
+		return
 	}
-	t.Logf("unmarshal success,conf:%v", conf)
+
+	t.Logf("unmarshal success, conf:%#v, port:%v", conf, conf.ServerConf.Port)
+	confData, err := Marshal(conf)
+	if err != nil {
+		t.Errorf("marshal failed, err:%v", err)
+	}
+
+	t.Logf("marshal succ, conf:%s", string(confData))
+
+	//MarshalFile(conf, "C:/tmp/test.conf")
+}
+
+func TestIniConfigFile(t *testing.T) {
+
+	filename := "C:/tmp/test.conf"
+	var conf Config
+	conf.ServerConf.Ip = "localhost"
+	conf.ServerConf.Port = 88888
+	err := MarshalFile(filename, conf)
+	if err != nil {
+		t.Errorf("marshal failed, err:%v", err)
+		return
+	}
+
+	var conf2 Config
+	err = UnMarshalFile(filename, &conf2)
+	if err != nil {
+		t.Errorf("unmarshal failed, err:%v", err)
+	}
+
+	t.Logf("unmarshal succ, conf:%#v", conf2)
 }

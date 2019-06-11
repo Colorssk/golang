@@ -751,4 +751,30 @@ index := strings.Index(line, "=")
 
 .SetString()
 .Interface()//转化为%v任意类型
-continue------
+
+写入文件：
+"io/ioutil"
+ioutil.WriteFile(filename, result, 0755)
+
+
+// 单元测试和压力测试:
+testing包
+
+测试包：在一个包下面test测试文件中可以是随意调用其他文件中的函数
+单元测试：必须以:_test.go结尾，单元测试函数必须是Test开头可以是TestAdd(Testh后面的英文首字母大写)且只有一个参数: *Testing.T；
+t.Fatalf();
+t.Logf()
+基准测试或者压力测试:必须是 Benchmark开头，参数是*Testing.B
+
+压力测试案例：line19; 调用  go test -bench  
+go test -bench   BenchmarkAdd //表示仅仅执行这个函数
+go test -bench  . //执行所有压力测试用例
+func BenchmarkAdd(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		a := 10
+		b := 20
+		Add(a, b)// 反复测试调用这个函数
+	}
+}
+
+测试某个测试用例： go test -run ...
