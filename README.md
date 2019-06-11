@@ -790,7 +790,7 @@ dlv debug  包或者源代码的路径
 然后设置断点：
 b main.main // b断点开头 
 c // 执行程序
-main是包名.main是函数名
+main.main  文件名字
 p a // 显示a的值
 next继续执行
 
@@ -800,3 +800,8 @@ r// 重新执行程序
 s代表单步调试
 
 quit//退出
+
+监听正在运行的项目：
+dlv attach <pid>
+然后设置断点:
+b main.go:16// 在16行设置断点
