@@ -778,3 +778,25 @@ func BenchmarkAdd(b *testing.B) {
 }
 
 测试某个测试用例： go test -run ...
+
+调试工具delve:
+安装：
+go get github.com/derekparker/delve/cmd/dlv
+默认安装到GOPATH的bin目录下
+设置环境变量
+
+delve命令：
+dlv debug  包或者源代码的路径
+然后设置断点：
+b main.main // b断点开头 
+c // 执行程序
+main是包名.main是函数名
+p a // 显示a的值
+next继续执行
+
+print b //打印b的值
+
+r// 重新执行程序
+s代表单步调试
+
+quit//退出
