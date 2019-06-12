@@ -805,3 +805,21 @@ quit//退出
 dlv attach <pid>
 然后设置断点:
 b main.go:16// 在16行设置断点
+
+
+多线程设置断点： 
+dlv debug .\main.go
+b productSudu// 进入某个线程调试
+goroutines//查看现在有多少线程
+goroutine <线程编号>
+bt//查看具体线程堆栈
+
+并发和并行；
+并发： 两队人用一个咖啡机，一个段时间多个队列同时执行，但是实际上只有一个任务执行
+并行： 两队人用两个咖啡机，某个时刻是多个任务同时进行的
+
+用户态的线程叫做协程(goroutine)
+
+
+goroutine创建： linethread->goroutine
+......
