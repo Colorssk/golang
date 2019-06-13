@@ -822,4 +822,21 @@ bt//查看具体线程堆栈
 
 
 goroutine创建： linethread->goroutine
+
+
+runtime(文件linethread->runtime)
+通过runtime包进行多核设置
+GOMAXPROCS设置当前程序运行时占用的CPU核数
+NumCPU获取当前系统的核数
+
+
+channel是个队列是个容器（队列）
+
+linethread->channel
+
+var 变量名 chan 数据类型
+
+
+用channel实现goruntine的同步
+linethread->goroutine_sync
 ......
