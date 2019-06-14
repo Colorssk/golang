@@ -839,4 +839,28 @@ var 变量名 chan 数据类型
 
 用channel实现goruntine的同步
 linethread->goroutine_sync
+
+单向channel:申明 var c  <-  chan int//代表管道c只能读取数据
+var c chan   <-  int // 代表只能插入数据
+
+
+for range管道：linethread->for_range_chan
+
+
+重要： 队列会发生死锁的两种情况：
+1： 队列是空的取出来的时候回发生死锁
+2： 队列设置了大小，插入的元素个数超过限制，发生死锁
+
+
+channel的长度和容量：  cap(ch)// 容量  len(ch)// 长度
+
+
+// 重要：
+等待一组goroutine的结束：
+1： 用带缓存区的channel:  linethread->waitgroup1(exitchannel沟通所有线程)
+更好的方式：linethread->waitgroup
+2：用sync包中的WaitGroup
+
+workerpool:
+
 ......
