@@ -861,6 +861,6 @@ channel的长度和容量：  cap(ch)// 容量  len(ch)// 长度
 更好的方式：linethread->waitgroup
 2：用sync包中的WaitGroup
 
-workerpool:
+workerpool:linethread->workerpool（正经的生产消费者模式）
 
 ......
