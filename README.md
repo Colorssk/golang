@@ -863,4 +863,16 @@ channel的长度和容量：  cap(ch)// 容量  len(ch)// 长度
 
 workerpool:linethread->workerpool（正经的生产消费者模式）
 
+
+select语法:（实现同时监听多个管道）
+linethread->select// 实现多个channel同时读写
+也有用select写入管道linethread->select
+
+
+线程安全：
+多个goroutine操作同一个资源（临界区），需要互斥锁
+linethread->mutex
+
+
+读写锁
 ......
