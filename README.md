@@ -874,5 +874,7 @@ linethread->select// 实现多个channel同时读写
 linethread->mutex
 
 
-读写锁
+读写锁（读多写少）linethread->rw_lock
+场景： 当一个线程写的时候其他线程都等待
+       当一个线程读的时候，除了写的线程等待，读的线程均可运行
 ......
