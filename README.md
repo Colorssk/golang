@@ -877,4 +877,32 @@ linethread->mutex
 读写锁（读多写少）linethread->rw_lock
 场景： 当一个线程写的时候其他线程都等待
        当一个线程读的时候，除了写的线程等待，读的线程均可运行
+
+原子操作：（如果有大量的goroutine加锁会产生平凡的上下文切换）       
+加锁代价比较耗时，所以使用原子操作：
+针对基本数据类型
+原子操作的方法有：
+1:加减操作：
+AddInt32(addr *int32, data int64)
+AddInt64;
+AddUnit32;
+AddUnit64
+2:比较病交换
+CompareAndSwapInt32(add *int32,old,new int32);
+CompareAndSwapInt64;
+CompareAndSwapPointer
+读取操作：
+LoadInt32(addr *int32);
+LoadInt64;
+LoadPointer
+3：写入操作:
+StroreInt32(addr *int32);
+StroreInt64;
+StrorePointer
+4:交换操作：
+SwapInt32(addr *int32,val int32);
+SwapInt64;
+SwapPointer
+
+continue
 ......

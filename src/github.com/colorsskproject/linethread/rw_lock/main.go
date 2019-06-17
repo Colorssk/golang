@@ -13,7 +13,7 @@ var wg sync.WaitGroup
 func write() {
 	rwlock.Lock() // 获取写锁
 	fmt.Println("write lock")
-	x = x + 1
+	x = x + 1 
 	time.Sleep(10 * time.Second)
 	fmt.Println("write unlock")
 	rwlock.Unlock()
