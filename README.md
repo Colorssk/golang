@@ -904,5 +904,10 @@ SwapInt32(addr *int32,val int32);
 SwapInt64;
 SwapPointer
 
-continue
+服务端的tcp连接  linethread->tcp_server
+客户端的tcp连接  linethread->tcp_client
+
+http客户端连接   linethread->http_client(发送http请求)
+
+udp实时性比较好
 ......
