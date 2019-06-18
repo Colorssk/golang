@@ -15,7 +15,7 @@ func main() {
 
 	data := "GET / HTTP/1.1\r\n" // 数据包  需要/r/n
 	data += "HOST: www.baidu.com\r\n"
-	data += "connection: close\r\n"
+	data += "connection: close\r\n" // 短连接
 	data += "\r\n\r\n"
 
 	_, err = io.WriteString(conn, data) // 往连接中写入数据
