@@ -909,7 +909,7 @@ SwapPointer
 
 http客户端连接   linethread->http_client(发送http请求)
 
-udp实时性比较好
+udp实时性比较好  test
 
 设置http服务器   linethread->http_server  设置路由和监听端口等
 ......
