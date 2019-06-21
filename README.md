@@ -914,4 +914,41 @@ udp实时性比较好  test
 设置http服务器   linethread->http_server  设置路由和监听端口等
 
 表单处理：linethread->form_proc
+html模板：web->template
+
+{{}}// 替换元素；
+{{.}}// 标识当前对象
+{{.Filenam}}// 访问当前对象属性
+
+模板中的if：
+{{if gt .Age 18}}
+{{else}}
+
+判断:
+if not .condition
+end
+
+if and .condition1 .condition2
+end
+
+if or .condition1 .condition2
+end
+
+if eq .condition1 .condition2
+end
+if ne .condition1 .condition2(不等于)
+end
+
+if lt .condition1 .condition2
+end
+
+if le .condition1 .condition2(小于等于)
+end
+
+if ge .condition1 .condition2(大于等于)
+
+模板for web-> template_for
+range .
+
+web服务器平滑升级
 ......
