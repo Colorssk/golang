@@ -951,7 +951,14 @@ if ge .condition1 .condition2(大于等于)
 range .
 
 web服务器平滑升级(优雅重启)
-文件继承(只支持linux不支持windows),子进程继承父进程
+文件继承(只支持linux不支持windows),子进程继承父进程:
+startChild(){
+    args := []string{"-child"}
+    cmd := exec.Command
+}
 
+
+jason格式：
+web->json_example
 
 ......
