@@ -964,4 +964,8 @@ web->json_example
 
 xml和结构体之间的转换 web->xml_example
 encoding/xml
+
+
+msgpack数据交换格式：二进制的json协议  web->msgpack_example
+需要安装包： go get github.com/vmihailenco/msgpack
 ......
