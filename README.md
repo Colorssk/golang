@@ -968,4 +968,28 @@ encoding/xml
 
 msgpack数据交换格式：二进制的json协议  web->msgpack_example
 需要安装包： go get github.com/vmihailenco/msgpack
+
+protobuf 数据格式：google推出，二进制（属于中间语言）
+需要：idl编写，生成指定语言的代码，序列化和反序列化
+idl中定义
+枚举类型：
+enum EnumAllowingAlias{
+    UNKNOW = 0;
+    STARTED = 1;
+    RUNNUING = 2;
+}
+
+结构体类型：
+message Person {
+    int32 id = 1;
+    string name = 2;// 后面的数字表示标识号
+    repeated Phone phones = 3;//repeated表示可重复的(相当于数组/切片)
+}
+
+使用：
+安装protoc编译器，解压后拷贝到GOPATH/bin目录下
+下载路径：https://github.com/google/protobuf/releases
+安装golang代码插件: go get -u github.com/golang/protobuf/protoc-gen-go
+
+写完dle后在当前目录生成go的代码: protoc --go_out=./address/ .\person.proto    //前面是生成存放的路径，后面是目标文件 
 ......
