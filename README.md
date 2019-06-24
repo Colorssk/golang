@@ -1026,4 +1026,13 @@ mysql事务处理步骤：
 Db.Begin()// 开启事务
 Db.Commit()// 提交一个事务
 Db.Rollback()// 回滚一个事务
+
+
+性能更好的第三方库： sqlx库: web->sqlx_example
+支持: mysql，postgresql,oracle,sqlite；
+查询  sqlx.DB.Get和sql.DB.Select
+更新，插入和删除： sql.DB.Exec
+事务：sql.DB.Begin(),sql.DB.Commit(),sql.DB.Rollback()
+
+自己拼装sql会有sql注入的漏洞
 ......
