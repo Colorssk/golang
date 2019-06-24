@@ -992,4 +992,11 @@ message Person {
 安装golang代码插件: go get -u github.com/golang/protobuf/protoc-gen-go
 
 写完dle后在当前目录生成go的代码: protoc --go_out=./address/ .\person.proto    //前面是生成存放的路径，后面是目标文件 
+
+
+依赖管理工具： godep:
+下载: go get github.com/tools/godep
+输入godep有帮助信息说明安装成功
+godep save
+生成godep(版本信息)文件和vendor（第三方包源码）文件
 ......
