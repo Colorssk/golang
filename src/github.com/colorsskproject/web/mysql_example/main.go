@@ -122,7 +122,7 @@ func testDeleteData() {
 
 func testPrepareData() {
 	sqlstr := "select id, name, age from user where id > ?"
-	stmt, err := DB.Prepare(sqlstr)
+	stmt, err := DB.Prepare(sqlstr) // 命令传入
 	if err != nil {
 		fmt.Printf("prepare failed, err:%v\n", err)
 		return
@@ -134,7 +134,7 @@ func testPrepareData() {
 		}
 	}()
 
-	rows, err := stmt.Query(0)
+	rows, err := stmt.Query(0) // 数据传入
 	//重点关注， rows对象一定要close掉
 	defer func() {
 		if rows != nil {

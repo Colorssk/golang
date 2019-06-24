@@ -1011,8 +1011,14 @@ CREATE TABLE 'user' {
 PRIMARY KEY ('id')
 }ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4
 
-提供方法：web->
+提供方法：web->mysql_example
 单行查询：Db.QueryRow
 多行查询：Db.Query
 
+
+sql预处理：(命令部分和数据部分分开来单独发)：防范sql注入
+DB.Prepare(sql string)(*sql.Stmt,error)
+Stmt.Query()
+DB.Prepare(sql string)(*sql.Stmt,error)
+Stmt.Exec()
 ......
