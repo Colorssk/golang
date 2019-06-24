@@ -1021,4 +1021,9 @@ DB.Prepare(sql string)(*sql.Stmt,error)
 Stmt.Query()
 DB.Prepare(sql string)(*sql.Stmt,error)
 Stmt.Exec()
+
+mysql事务处理步骤：
+Db.Begin()// 开启事务
+Db.Commit()// 提交一个事务
+Db.Rollback()// 回滚一个事务
 ......

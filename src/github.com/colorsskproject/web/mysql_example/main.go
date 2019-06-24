@@ -182,17 +182,17 @@ func testPrepareInsertData() {
 
 func testTrans() {
 
-	conn, err := DB.Begin()
+	conn, err := DB.Begin() // 开启一个事务(连接)
 	if err != nil {
 		if conn != nil {
-			conn.Rollback()
+			conn.Rollback() // 开启失败进行事务回滚
 		}
 		fmt.Printf("begin failed, err:%v\n", err)
 		return
 	}
 
 	sqlstr := "update user set age = 1 where id = ?"
-	_, err = conn.Exec(sqlstr, 1)
+	_, err = conn.Exec(sqlstr, 1) //这里exec方法是来自con（开启的事务对象的）类似于预处理中对象是smt,一般情况是Db对象
 	if err != nil {
 		conn.Rollback()
 		fmt.Printf("exec sql:%s failed, err:%v\n", sqlstr, err)
@@ -206,7 +206,7 @@ func testTrans() {
 		fmt.Printf("exec second sql:%s failed, err:%v\n", sqlstr, err)
 		return
 	}
-	err = conn.Commit()
+	err = conn.Commit() // 最后提交事务，确定事务结束
 	if err != nil {
 		fmt.Printf("commit failed, err:%v\n", err)
 		conn.Rollback()
