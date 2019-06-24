@@ -1011,7 +1011,7 @@ CREATE TABLE 'user' {
 PRIMARY KEY ('id')
 }ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4
 
-提供方法：
+提供方法：web->
 单行查询：Db.QueryRow
 多行查询：Db.Query
 

@@ -16,8 +16,8 @@ func initDb() error {
 		return err
 	}
 
-	DB.SetMaxOpenConns(100)
-	DB.SetMaxIdleConns(16)
+	DB.SetMaxOpenConns(100) // 设置最大连接数
+	DB.SetMaxIdleConns(16)  // 设置最大空闲连接
 	return nil
 }
 
@@ -42,9 +42,9 @@ func testQueryMultilRow() {
 		return
 	}
 
-	for rows.Next() {
+	for rows.Next() { // 遍历所有结果
 		var user User
-		err := rows.Scan(&user.Id, &user.Name, &user.Age) // 把查询到的结果放入结构体，这里的结构体要注意要用映射
+		err := rows.Scan(&user.Id, &user.Name, &user.Age) // 把查询到的结果放入结构体，这里的结构体要注意要用映射，scan也是连接池释放的操作
 		if err != nil {
 			fmt.Printf("scan failed, err:%v\n", err)
 			return
@@ -75,14 +75,14 @@ func testQueryData() {
 }
 
 func testInsertData() {
-	sqlstr := "insert into user(name, age) values(?, ?)"
+	sqlstr := "insert into user(name, age) values(?, ?)" // 插入语句
 	result, err := DB.Exec(sqlstr, "tom", 18)
 	if err != nil {
 		fmt.Printf("insert failed, err:%v\n", err)
 		return
 	}
 
-	id, err := result.LastInsertId()
+	id, err := result.LastInsertId() // 对查询到的结果进行提取
 	if err != nil {
 		fmt.Printf("get last insert id failed, err:%v\n", err)
 		return
@@ -90,7 +90,7 @@ func testInsertData() {
 	fmt.Printf("id is %d\n", id)
 }
 
-func testUpdateData() {
+func testUpdateData() { // 更新
 	sqlstr := "update user set name=? where id=?"
 	result, err := DB.Exec(sqlstr, "jim", 3)
 	if err != nil {
@@ -98,7 +98,7 @@ func testUpdateData() {
 		return
 	}
 
-	affected, err := result.RowsAffected()
+	affected, err := result.RowsAffected() // 更改的行数据
 	if err != nil {
 		fmt.Printf("get affected rows failed, err:%v\n", err)
 	}
