@@ -999,4 +999,20 @@ message Person {
 输入godep有帮助信息说明安装成功
 godep save
 生成godep(版本信息)文件和vendor（第三方包源码）文件
+
+
+golang中提供mysql驱动接口和管理：
+github.com/go-sql-driver/mysql
+
+创建表例子:
+CREATE TABLE 'user' {
+'id' bingint(20) NOT_NULL AUTO_INCREMENT,
+'name' varchar(20) DEFAULT '',
+PRIMARY KEY ('id')
+}ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4
+
+提供方法：
+单行查询：Db.QueryRow
+多行查询：Db.Query
+
 ......
