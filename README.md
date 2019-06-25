@@ -1035,4 +1035,19 @@ Db.Rollback()// 回滚一个事务
 事务：sql.DB.Begin(),sql.DB.Commit(),sql.DB.Rollback()
 
 自己拼装sql会有sql注入的漏洞
+
+redis:（单进程单线程处理请求） 
+1：常用作缓存系统，完全可以替代memcache;
+2：计数场景；
+3：热门和排行榜应用，使用sorted set轻松搞定：
+zadd login_times user_id score
+// 当用户登录时，对该用户的登录次数自增1
+ret = zincrby("login_times",1,uid)
+// 获取登录次数最多的用户,逆序排列获取第N的数据
+ret = r.zrevrange("login_times",0,N-1)
+4使用list数据结构，很容易实现一个消息队列
+
+支持： epoll,kqueue等高性能网络模型(question:什么是网络模型);
+支持： rdb(设快照)持久化和AOf持久化(刷磁盘)
+
 ......
