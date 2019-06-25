@@ -1050,4 +1050,9 @@ ret = r.zrevrange("login_times",0,N-1)
 支持： epoll,kqueue等高性能网络模型(question:什么是网络模型);
 支持： rdb(设快照)持久化和AOf持久化(刷磁盘)
 
+
+使用： go get github.com/garyburd/redigo/redis
+redis.io（redis官网）
+lpush()
+lpop()或者rpop()
 ......
