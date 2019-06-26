@@ -1055,4 +1055,7 @@ ret = r.zrevrange("login_times",0,N-1)
 redis.io（redis官网）
 lpush()
 lpop()或者rpop()
+
+nsq: 内存分布式消息队列中间件(先进后出)
+解耦；流量削峰
 ......
