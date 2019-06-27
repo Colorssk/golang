@@ -1057,5 +1057,22 @@ lpush()
 lpop()或者rpop()
 
 nsq: 内存分布式消息队列中间件(先进后出)
-解耦；流量削峰
+解耦；流量削峰；
+组件： nsqd:消息接送，保存；
+nsqlookupd:存储nsq状态；
+nsqadmin:web管理平台
+
+nsq下载：
+https://nsq.io/deployment/installing.html
+启动nsqd（到安装目录下面）  ./nsqd.exe --lookupd-tcp-address-127.0.0.1:4160
+nsqlookupd双击运行即可
+启动nsqadmin: ./nsqadmin.exe --lookupd-http-address localhost:4161
+然后就可以打开web管理界面: localhost:4171
+通过channel name 进行消费的
+
+
+go 中使用:web->nsq_consumer消费者
+web->nsq_produce生产者
+go get github.com/nsqio/go-nsq
+import "github.com/nsqio/go-nsq"
 ......
