@@ -1075,4 +1075,13 @@ go 中使用:web->nsq_consumer消费者
 web->nsq_produce生产者
 go get github.com/nsqio/go-nsq
 import "github.com/nsqio/go-nsq"
+
+gin 框架 web->gin_example
+go get -u github.com/gin-gonic/gin
+import "github.com/gin-gonic/gin"
+提供Martini风格api,但比Martini要快40倍,基于httprouter
+
+
+restful风格api: web->resetful_example
+
 ......
