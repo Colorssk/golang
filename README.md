@@ -1080,8 +1080,19 @@ gin 框架 web->gin_example
 go get -u github.com/gin-gonic/gin
 import "github.com/gin-gonic/gin"
 提供Martini风格api,但比Martini要快40倍,基于httprouter
+web->param_in_querystring(参数获取)
+web->param_in_path(参数路径传递)
+web->param_in_form(表单获取)web->file_upload（文件上传）
+web->route_group(路由分组)
+param_binding（binding(json数据)）
 
+json渲染： web->render_json(json渲染+struct渲染)
+接口中结构体->渲染成xml返回: web->render_xml
+渲染模板->返回html： web->render_html
+静态资源渲染->web->render_static
 
 restful风格api: web->resetful_example
 
+
+中间件: 处理公共业务逻辑：耗时统计，日志打印，登录校验  web->cost_middleware
 ......
